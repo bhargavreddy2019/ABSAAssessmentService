@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PhonebookModelStoreContainer" CdmEntityContainer="PhonebookEntities">
+    <EntitySetMapping Name="phoneDetails">
+      <EntityTypeMapping TypeName="PhonebookModel.phoneDetail">
+        <MappingFragment StoreEntitySet="phoneDetails">
+          <ScalarProperty Name="phoneId" ColumnName="phoneId" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getPhoneDetails" FunctionName="PhonebookModel.Store.getPhoneDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PhonebookModel.getPhoneDetails_Result">
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="insertNewPhoneContact" FunctionName="PhonebookModel.Store.insertNewPhoneContact" />
+  </EntityContainerMapping>
+</Mapping>

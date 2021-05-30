@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PhonebookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="phoneDetail">
+    <Key>
+      <PropertyRef Name="phoneId" />
+    </Key>
+    <Property Name="phoneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="phoneNumber" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="createdDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="PhonebookEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="phoneDetails" EntityType="Self.phoneDetail" />
+    <FunctionImport Name="getPhoneDetails" ReturnType="Collection(PhonebookModel.getPhoneDetails_Result)">
+      <Parameter Name="searchText" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="insertNewPhoneContact">
+      <Parameter Name="phoneNumber" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="createdDate" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="getPhoneDetails_Result">
+    <Property Type="Int32" Name="phoneNumber" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="createdDate" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
